@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c34254aa-4a5c-4d3b-a6e7-97ebd8b6697f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="from" class="java.util.Date"/>
+	<parameter name="to" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[SELECT
+     tanggapan.`no_tanggapan` AS tanggapan_no_tanggapan,
+     tanggapan.`tgl` AS tanggapan_tgl,
+     tanggapan.`no_pengaduan` AS tanggapan_no_pengaduan,
+     tanggapan.`id_user` AS tanggapan_id_user,
+     tanggapan.`isi_tanggapan` AS tanggapan_isi_tanggapan
+FROM
+     `tanggapan` tanggapan
+WHERE
+tgl BETWEEN $P{from} AND $P{to}]]>
+	</queryString>
+	<field name="tanggapan_no_tanggapan" class="java.lang.String"/>
+	<field name="tanggapan_tgl" class="java.sql.Date"/>
+	<field name="tanggapan_no_pengaduan" class="java.lang.String"/>
+	<field name="tanggapan_id_user" class="java.lang.String"/>
+	<field name="tanggapan_isi_tanggapan" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="42573709-1fc3-4759-bcf8-8c120fad02ff" style="Title" x="1" y="0" width="423" height="62"/>
+				<textElement verticalAlignment="Middle">
+					<font size="36" isBold="false" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[REPORT TANGGAPAN]]></text>
+			</staticText>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement uuid="ccf969b1-afad-4c77-ae27-dc117e62dd7f" x="662" y="11" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{tanggapan_tgl}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement uuid="64e09ef8-b4a4-4c86-9d59-9f4db0992123" x="662" y="62" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{tanggapan_tgl}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="e3d0d803-a2de-44e9-99b5-b441f69631be" x="504" y="11" width="136" height="20"/>
+				<textElement/>
+				<text><![CDATA[Dari Tanggal                    :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e3d0d803-a2de-44e9-99b5-b441f69631be" x="504" y="62" width="136" height="20"/>
+				<textElement/>
+				<text><![CDATA[Sampai Tanggal              :]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="26f21bf3-3b9d-4194-9436-0a9ed9222e9f" x="2" y="109" width="798" height="1"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement uuid="f3c1798b-910f-4e7b-a8ac-80e51e9eac9f" positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="5723582c-ac1a-4ee0-ab26-c99e65331765" style="Column header" x="0" y="0" width="160" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[no_tanggapan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3256c701-63f5-4b81-b9c7-70c1a50df94f" style="Column header" x="160" y="0" width="160" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[tanggal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b61d5a89-1c76-491d-92db-c17eb06bd395" style="Column header" x="320" y="0" width="160" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[no_pengaduan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a42d1b26-d70e-4d30-87f3-443e9fe601e4" style="Column header" x="480" y="0" width="160" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[id_petugas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cf56634c-a0b5-4621-8133-bb0e30680050" style="Column header" x="640" y="0" width="160" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[isi_tanggapan]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="45" splitType="Stretch">
+			<frame>
+				<reportElement uuid="3575f6ff-1c59-44f3-a4d3-dc187198e36d" style="Row" mode="Opaque" x="0" y="0" width="802" height="15"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="a580aec7-7b5c-4f4e-a7bd-6a5960f4cd05" style="Detail" x="0" y="0" width="160" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{tanggapan_no_tanggapan}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="dd MMMMM yyyy">
+					<reportElement uuid="ec99ce50-04ec-4802-aac6-9fb08c3db89a" style="Detail" x="160" y="0" width="160" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{tanggapan_tgl}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="d94fe724-965e-46a4-8461-72ee02ff92e0" style="Detail" x="320" y="0" width="160" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{tanggapan_no_pengaduan}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="66a99f8d-18b2-46cf-8e62-77e0cfc27e7b" style="Detail" x="480" y="0" width="160" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{tanggapan_id_user}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="3ef21959-90b9-4a14-8786-94c84089d14c" style="Detail" x="640" y="0" width="160" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{tanggapan_isi_tanggapan}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch">
+			<line>
+				<reportElement uuid="a9dbeea4-76eb-407e-8541-903c67b7dba3" positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement uuid="3775d948-eab4-4bae-b1f7-91487eceda7d" mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF"/>
+				<textField evaluationTime="Report">
+					<reportElement uuid="c5d2f1f8-2b3a-4ce7-8983-2f1a4781637d" style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="a72a00af-f1e5-4d69-926f-d598aac4ef41" style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement uuid="bb6877ff-30fb-4e37-ae25-358f294203e7" style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
